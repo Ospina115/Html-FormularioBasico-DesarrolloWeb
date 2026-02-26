@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login &amp; Perfil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Fondo animado -->
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <main class="container">
+    <form id="mainForm" method="post" action="#">
+
+      <!-- ============================
+           PASO 1 — LOGIN
+      ============================= -->
+      <section id="loginStep" class="card active" aria-label="Inicio de sesión">
+
+        <div class="card-header">
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          </div>
+          <h1>Bienvenido</h1>
+          <p class="subtitle">Inicia sesión para continuar</p>
+        </div>
+
+        <div class="card-body">
+          <!-- Email -->
+          <div class="field">
+            <input type="email" id="loginEmail" name="loginEmail" placeholder=" " autocomplete="email" />
+            <label for="loginEmail">Correo electrónico</label>
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </span>
+          </div>
+
+          <!-- Password -->
+          <div class="field">
+            <input type="password" id="loginPassword" name="loginPassword" placeholder=" " autocomplete="current-password" />
+            <label for="loginPassword">Contraseña</label>
+            <button type="button" class="field-icon toggle-password" data-target="loginPassword" aria-label="Mostrar contraseña" tabindex="0">
+              <svg class="eye-open" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              <svg class="eye-closed hidden" viewBox="0 0 24 24"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46A11.804 11.804 0 0 0 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/></svg>
+            </button>
+          </div>
+
+          <!-- Recordar / Olvidé -->
+          <div class="options-row">
+            <label class="check-inline">
+              <input type="checkbox" name="rememberMe" />
+              <span>Recuérdame</span>
+            </label>
+            <a href="#" class="link">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <!-- Botón login -->
+          <button type="button" id="loginBtn" class="btn btn-primary">
+            Iniciar sesión
+            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
+          </button>
+        </div>
+
+        <div class="card-footer">
+          <p>¿No tienes cuenta? <a href="#" class="link">Regístrate gratis</a></p>
+        </div>
+
+      </section>
+
+      <!-- ============================
+           PASO 2 — FORMULARIO DE PERFIL
+      ============================= -->
+      <section id="formStep" class="card" aria-label="Formulario de perfil">
+
+        <div class="card-header">
+          <div class="step-badge">Paso 2 de 2</div>
+          <h1>Completa tu perfil</h1>
+          <p class="subtitle">Cuéntanos un poco sobre ti</p>
+          <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="card-body" id="formBody">
+          <div class="form-grid">
+
+            <!-- Nombre completo (text - básico) -->
+            <div class="field span-2">
+              <input type="text" id="fullName" name="fullName" placeholder=" " autocomplete="name" />
+              <label for="fullName">Nombre completo</label>
+            </div>
+
+            <!-- Teléfono (tel - básico) -->
+            <div class="field">
+              <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" pattern="[0-9+\-\s()]+" />
+              <label for="phone">Teléfono</label>
+            </div>
+
+            <!-- Fecha de nacimiento (date - menos común en forms) -->
+            <div class="field">
+              <input type="date" id="birthdate" name="birthdate" />
+              <label for="birthdate" class="always-up">Fecha de nacimiento</label>
+            </div>
+
+            <!-- País (datalist - POCO USADO: autocomplete con sugerencias) -->
+            <div class="field span-2">
+              <input type="text" id="country" name="country" list="countryList" placeholder=" " autocomplete="off" />
+              <label for="country">País de origen</label>
+              <datalist id="countryList">
+                <option value="México"></option>
+                <option value="España"></option>
+                <option value="Argentina"></option>
+                <option value="Colombia"></option>
+                <option value="Chile"></option>
+                <option value="Perú"></option>
+                <option value="Venezuela"></option>
+                <option value="Ecuador"></option>
+                <option value="Estados Unidos"></option>
+                <option value="Cuba"></option>
+              </datalist>
+            </div>
+
+            <!-- Ocupación (select - básico) -->
+            <div class="field select-wrap span-2">
+              <select id="occupation" name="occupation">
+                <option value="" disabled selected></option>
+                <option value="estudiante">Estudiante</option>
+                <option value="desarrollador">Desarrollador / Programador</option>
+                <option value="disenador">Diseñador</option>
+                <option value="docente">Docente</option>
+                <option value="emprendedor">Emprendedor</option>
+                <option value="otro">Otro</option>
+              </select>
+              <label for="occupation" class="always-up">Ocupación</label>
+              <span class="select-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+              </span>
+            </div>
+
+            <!-- Nivel de experiencia (range + output - POCO USADO) -->
+            <div class="field range-field span-2">
+              <div class="range-header">
+                <span class="range-title">Nivel de experiencia</span>
+                <output id="expOutput" for="experience">5</output>
+              </div>
+              <input type="range" id="experience" name="experience" min="1" max="10" value="5" />
+              <div class="range-labels">
+                <span>Principiante</span>
+                <span>Intermedio</span>
+                <span>Experto</span>
+              </div>
+            </div>
+
+            <!-- Hora de contacto (time - POCO USADO) -->
+            <div class="field">
+              <input type="time" id="contactTime" name="contactTime" />
+              <label for="contactTime" class="always-up">Hora preferida de contacto</label>
+            </div>
+
+            <!-- Número de dependientes (number con step - básico pero con atributos poco usados) -->
+            <div class="field">
+              <input type="number" id="dependents" name="dependents" placeholder=" " min="0" max="20" step="1" />
+              <label for="dependents">N.° de dependientes</label>
+            </div>
+
+            <!-- Color favorito (color picker - POCO USADO) -->
+            <div class="field color-field">
+              <label class="color-label">
+                <span>Color favorito</span>
+                <input type="color" id="favColor" name="favColor" value="#6c63ff" />
+                <span class="color-preview" id="colorPreview"></span>
+              </label>
+            </div>
+
+            <!-- Búsqueda de intereses (search - POCO USADO) -->
+            <div class="field">
+              <input type="search" id="interests" name="interests" placeholder=" " />
+              <label for="interests">Interés principal</label>
+            </div>
+
+            <!-- Comunicación (radio como pills - menos usados visualmente así) -->
+            <div class="field radio-group span-2">
+              <span class="group-title">Medio de comunicación preferido</span>
+              <div class="radio-pills">
+                <label class="pill">
+                  <input type="radio" name="comms" value="email" checked />
+                  <span>📧 Email</span>
+                </label>
+                <label class="pill">
+                  <input type="radio" name="comms" value="sms" />
+                  <span>💬 SMS</span>
+                </label>
+                <label class="pill">
+                  <input type="radio" name="comms" value="whatsapp" />
+                  <span>📱 WhatsApp</span>
+                </label>
+                <label class="pill">
+                  <input type="radio" name="comms" value="llamada" />
+                  <span>📞 Llamada</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Bio (textarea - básico) -->
+            <div class="field span-2">
+              <textarea id="bio" name="bio" placeholder=" " rows="3"></textarea>
+              <label for="bio">Descripción personal</label>
+            </div>
+
+            <!-- Boletín (toggle switch sobre checkbox - POCO USADO visualmente) -->
+            <div class="field toggle-field span-2">
+              <span class="toggle-text">Suscribirme al boletín de noticias</span>
+              <label class="toggle-switch" aria-label="Boletín de noticias">
+                <input type="checkbox" name="newsletter" id="newsletter" />
+                <span class="track"><span class="thumb"></span></span>
+              </label>
+            </div>
+
+          </div><!-- /form-grid -->
+        </div><!-- /card-body -->
+
+        <div class="card-actions">
+          <button type="button" id="backBtn" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            Volver
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Enviar datos
+            <svg viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </button>
+        </div>
+
+      </section>
+
+    </form>
+  </main>
+
+  <script src="prueba.js"></script>
+</body>
+</html>
