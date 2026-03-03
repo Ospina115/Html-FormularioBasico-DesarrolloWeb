@@ -153,49 +153,40 @@
 
     console.log('Datos capturados del formulario:', entries);
 
-    // Mostrar overlay de éxito
-    showSuccess();
+    // Mostrar animación de carga breve antes de redirigir
+    showLoadingAndRedirect();
 
     // En producción, aquí harías:
     // mainForm.submit();  → envío POST real
     // o fetch('/endpoint', { method:'POST', body: data })
   });
 
-  /** Muestra un overlay animado de éxito */
-  function showSuccess() {
+  /** Muestra animación de carga y redirige a la galería */
+  function showLoadingAndRedirect() {
     const overlay = document.createElement('div');
-    overlay.className = 'success-overlay';
+    overlay.className = 'loading-overlay';
     overlay.setAttribute('role', 'alert');
     overlay.innerHTML = `
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-        </svg>
+      <div class="loading-content">
+        <div class="spinner">
+          <svg viewBox="0 0 24 24" class="spin">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" 
+                    stroke-linecap="round" stroke-dasharray="60" stroke-dashoffset="60">
+              <animate attributeName="stroke-dashoffset" dur="2s" repeatCount="indefinite" values="60;0;60"/>
+            </circle>
+          </svg>
+        </div>
+        <h2>Procesando información...</h2>
+        <p>Enviando datos y preparando tu galería personalizada</p>
       </div>
-      <h2>¡Datos enviados!</h2>
-      <p>Tu información fue registrada correctamente.<br>
-         En breve recibirás una confirmación.</p>
-      <button id="resetBtn" class="btn btn-primary" style="width:auto;margin-top:0.5rem">
-        Volver al inicio
-      </button>
     `;
 
     document.body.appendChild(overlay);
 
-    document.getElementById('resetBtn').addEventListener('click', function () {
-      overlay.remove();
-      // Regresar al login y limpiar formulario
-      formStep.classList.remove('active');
-      loginStep.classList.add('active');
-      mainForm.reset();
-      updateRange();
-      // Restablecer borde del color picker
-      const colorLabel = colorInput.closest('.color-label');
-      if (colorLabel) {
-        colorLabel.style.borderColor = '';
-        colorLabel.style.boxShadow   = '';
-      }
-    });
+    // Redirigir a la galería después de 2 segundos
+    setTimeout(function () {
+      window.location.href = 'gallery.html';
+    }, 2000);
   }
 
   // ─── SOPORTE TECLADO: Enter en login ────────────────────────
